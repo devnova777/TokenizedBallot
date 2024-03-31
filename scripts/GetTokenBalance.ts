@@ -1,13 +1,11 @@
 import { createPublicClient, formatEther, http } from "viem";
 import { sepolia } from "viem/chains";
-import { privateKeyToAccount } from "viem/accounts";
 import { abi } from "../artifacts/contracts/GroupOneToken.sol/MyToken.json";
 import * as dotenv from "dotenv";
 
 dotenv.config();
 
 const providerApiKey = process.env.ALCHEMY_API_KEY || "";
-const deployerApiKey = process.env.PRIVATE_KEY || "";
 
 async function main() {
   console.log("Getting Token Balance...");
