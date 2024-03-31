@@ -53,7 +53,7 @@ async function main() {
   });
   console.log("Transaction hash:", hash);
   console.log("Waiting for confirmations...");
-  const receipt = await publicClient.getTransactionReceipt({ hash });
+  const receipt = await publicClient.waitForTransactionReceipt({ hash });
   console.log("Transaction confirmed.");
   console.log(
     `\n${deployer.account.address} successfully delegated to ${delegateeAddress}`
