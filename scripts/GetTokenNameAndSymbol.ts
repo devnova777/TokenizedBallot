@@ -36,7 +36,7 @@ async function main() {
   });
 
   console.log(
-    `Token contract at ${contractAddress}: \nName: ${tokenName}\nSymbol: ${tokenSymbol}`
+    `Token contract at ${contractAddress}: \n - Name: ${tokenName}\n - Symbol: ${tokenSymbol}`
   );
 }
 
