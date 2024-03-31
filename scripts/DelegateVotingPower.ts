@@ -31,11 +31,11 @@ async function main() {
     transport: http(`https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`),
   });
 
-  //   const tokenName = await publicClient.readContract({
-  //     address: contractAddress,
-  //     abi,
-  //     functionName: "name",
-  //   });
+  const tokenName = await publicClient.readContract({
+    address: contractAddress,
+    abi,
+    functionName: "name",
+  });
 
   const account = privateKeyToAccount(`0x${deployerApiKey}`);
   const deployer = createWalletClient({
@@ -66,7 +66,7 @@ async function main() {
     args: [delegateeAddress],
   });
   console.log(
-    `${delegateeAddress} now has ${votingPower} voting power for Token at ${contractAddress}`
+    `${delegateeAddress} now has ${votingPower} voting power for ${tokenName} at ${contractAddress}`
   );
 }
 
