@@ -1,4 +1,9 @@
-import { createPublicClient, createWalletClient, http } from "viem";
+import {
+  createPublicClient,
+  createWalletClient,
+  http,
+  formatEther,
+} from "viem";
 import { sepolia } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 import * as dotenv from "dotenv";
@@ -59,14 +64,17 @@ async function main() {
     `\n${deployer.account.address} successfully delegated to ${delegateeAddress}`
   );
 
-  const votingPower = await publicClient.readContract({
+  const votingPower = (await publicClient.readContract({
     address: contractAddress,
     abi,
     functionName: "getVotes",
     args: [delegateeAddress],
-  });
+  })) as bigint;
+
   console.log(
-    `${delegateeAddress} now has ${votingPower} voting power for ${tokenName} at ${contractAddress}`
+    `${delegateeAddress} now has ${formatEther(
+      votingPower
+    )} voting power for ${tokenName} at ${contractAddress}`
   );
 }
 

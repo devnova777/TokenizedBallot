@@ -19,7 +19,6 @@ const providerApiKey = process.env.ALCHEMY_API_KEY || "";
 const deployerApiKey = process.env.PRIVATE_KEY || "";
 
 async function main() {
-  //TODO: validate args
   const parameters = process.argv.slice(2);
   if (!parameters || parameters.length < 3)
     throw new Error(
@@ -75,7 +74,7 @@ async function main() {
   console.log("Waiting for confirmations...");
 
   const receipt = await publicClient.waitForTransactionReceipt({ hash });
-  console.log(`\nToken Contract deployed at ${receipt.contractAddress}`);
+  console.log(`\Ballot Contract deployed at ${receipt.contractAddress}`);
 
   const deployedProposals = (await publicClient.readContract({
     address: receipt.contractAddress!,
